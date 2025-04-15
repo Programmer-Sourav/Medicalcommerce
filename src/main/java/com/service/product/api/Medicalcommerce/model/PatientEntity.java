@@ -1,12 +1,10 @@
 package com.service.product.api.Medicalcommerce.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class PatientEntity {
@@ -16,7 +14,7 @@ public class PatientEntity {
 
     private String patientName;
 
-    public PatientEntity(Long id, String patientName, String patientPhoneNumber, Long patientEmailId, ArrayList<String> diseaseHistory) {
+    public PatientEntity(Long id, String patientName, String patientPhoneNumber, String patientEmailId, ArrayList<String> diseaseHistory) {
         this.id = id;
         this.patientName = patientName;
         this.patientPhoneNumber = patientPhoneNumber;
@@ -50,23 +48,27 @@ public class PatientEntity {
         this.patientPhoneNumber = patientPhoneNumber;
     }
 
-    public Long getPatientEmailId() {
+    public String getPatientEmailId() {
         return patientEmailId;
     }
 
-    public void setPatientEmailId(Long patientEmailId) {
+    public void setPatientEmailId(String patientEmailId) {
         this.patientEmailId = patientEmailId;
     }
 
     public ArrayList<String> getDiseaseHistory() {
-        return diseaseHistory;
+        return (ArrayList<String>) diseaseHistory;
     }
 
     public void setDiseaseHistory(ArrayList<String> diseaseHistory) {
         this.diseaseHistory = diseaseHistory;
     }
 
-    private Long patientEmailId;
-    private ArrayList<String> diseaseHistory;
+    private String patientEmailId;
+    @ElementCollection
+    @CollectionTable(name="patient_diseases_table",
+            joinColumns = @JoinColumn(name="patient_id"))
+    @Column(name = "diseases")
+    private List<String> diseaseHistory;
 
 }
