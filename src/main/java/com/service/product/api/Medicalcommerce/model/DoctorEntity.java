@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 public class DoctorEntity {
-    public DoctorEntity(Long id, String preAssignedDoctorId, String doctorsUploadedPanCardForVerificationFilePath, String city, String hospitalAddress, String specialityOfDoctor, List<String> availableTimes, List<String> currentAppointments) {
+    public DoctorEntity(Long id, String preAssignedDoctorId, String doctorsUploadedPanCardForVerificationFilePath, String city, String hospitalAddress, String specialityOfDoctor, List<String> availableTimes, List<AppointmentEntity> currentAppointments) {
         this.id = id;
         this.preAssignedDoctorId = preAssignedDoctorId;
         this.doctorsUploadedPanCardForVerificationFilePath = doctorsUploadedPanCardForVerificationFilePath;
@@ -67,11 +67,11 @@ public class DoctorEntity {
         this.availableTimes = availableTimes;
     }
 
-    public List<String> getCurrentAppointments() {
+    public List<AppointmentEntity> getCurrentAppointments() {
         return currentAppointments;
     }
 
-    public void setCurrentAppointments(List<String> currentAppointments) {
+    public void setCurrentAppointments(List<AppointmentEntity> currentAppointments) {
         this.currentAppointments = currentAppointments;
     }
 
@@ -79,11 +79,13 @@ public class DoctorEntity {
     private String specialityOfDoctor;
     private List<String> availableTimes;
 
-    @ElementCollection
-    @CollectionTable(name="AppointmentBookings",
-    joinColumns = @JoinColumn(name ="preAssignedDoctorId"))
-    @Column(name = "appointments")
-    private List<String> currentAppointments;
+//    @ElementCollection
+//    @CollectionTable(name="AppointmentBookings",
+//    joinColumns = @JoinColumn(name ="doctorId"))
+//    @Column(name = "appointments")
+
+    @OneToMany(mappedBy = "doctorId", cascade =  CascadeType.ALL)
+    private List<AppointmentEntity> currentAppointments;
 
 
     public DoctorsAddressEntity getAddressDetails() {

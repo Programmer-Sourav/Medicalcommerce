@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "AppointmentBookings")
+//@Table(name = "AppointmentBookings")
 public class AppointmentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,10 +13,11 @@ public class AppointmentEntity {
     private Date appointmentTimeStamp;
 
     public AppointmentEntity(){}
-    public AppointmentEntity(Long id, Date appointmentTimeStamp, Long doctorId) {
+    public AppointmentEntity(Long id, Date appointmentTimeStamp, Long doctorId, Long patientId) {
         this.id = id;
         this.appointmentTimeStamp = appointmentTimeStamp;
         this.doctorId = doctorId;
+        this.patientId = patientId;
     }
 
     public Long getId() {
@@ -44,5 +45,18 @@ public class AppointmentEntity {
     }
 
     private Long doctorId;
+    private Long patientId;
 
+    public Long getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
+    }
+
+
+    @ManyToOne
+    @JoinColumn(name = "preAssignedDoctorId", insertable = false, updatable = false)
+    private DoctorEntity doctorEntity;
 }

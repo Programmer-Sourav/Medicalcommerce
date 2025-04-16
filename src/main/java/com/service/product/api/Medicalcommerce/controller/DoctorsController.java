@@ -3,16 +3,14 @@ package com.service.product.api.Medicalcommerce.controller;
 
 import com.service.product.api.Medicalcommerce.API.ApiResponse;
 import com.service.product.api.Medicalcommerce.model.DoctorEntity;
-import com.service.product.api.Medicalcommerce.model.PatientEntity;
 import com.service.product.api.Medicalcommerce.servicelayer.DoctorsService;
-import com.service.product.api.Medicalcommerce.servicelayer.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/doctors")
-public class DoctorsFunctionalityController {
+public class DoctorsController {
     @Autowired
     private DoctorsService doctorService;
 
