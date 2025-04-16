@@ -8,10 +8,12 @@ import com.service.product.api.Medicalcommerce.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import javax.print.Doc;
 import java.util.List;
 
+@Service
 public class DoctorsService {
     @Autowired
     DoctorsRepository doctorsRepository;

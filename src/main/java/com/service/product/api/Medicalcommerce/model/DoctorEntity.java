@@ -6,13 +6,14 @@ import java.util.List;
 
 @Entity
 public class DoctorEntity {
-    public DoctorEntity(Long id, String preAssignedDoctorId, String doctorsUploadedPanCardForVerificationFilePath, String city, String hospitalAddress, String specialityOfDoctor, List<String> availableTimes, List<AppointmentEntity> currentAppointments) {
+    public DoctorEntity(Long id, String preAssignedDoctorId, String doctorsUploadedPanCardForVerificationFilePath, String city, String hospitalAddress, String specialityOfDoctor, List<String> availableTimes, List<AppointmentEntity> currentAppointments, String doctorName) {
         this.id = id;
         this.preAssignedDoctorId = preAssignedDoctorId;
         this.doctorsUploadedPanCardForVerificationFilePath = doctorsUploadedPanCardForVerificationFilePath;
         this.specialityOfDoctor = specialityOfDoctor;
         this.availableTimes = availableTimes;
         this.currentAppointments = currentAppointments;
+        this.doctorName = doctorName;
     }
 
     public DoctorEntity(){}
@@ -77,6 +78,16 @@ public class DoctorEntity {
 
 
     private String specialityOfDoctor;
+    private String doctorName;
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
     private List<String> availableTimes;
 
 //    @ElementCollection

@@ -72,4 +72,15 @@ public class PatientEntity {
     @Column(name = "diseases")
     private List<String> diseaseHistory;
 
+    public List<AppointmentEntity> getCurrentListOfAppointments() {
+        return currentListOfAppointments;
+    }
+
+    public void setCurrentListOfAppointments(List<AppointmentEntity> currentListOfAppointments) {
+        this.currentListOfAppointments = currentListOfAppointments;
+    }
+
+    @OneToMany(mappedBy = "patientId", cascade = CascadeType.ALL)
+    private List<AppointmentEntity> currentListOfAppointments;
+
 }

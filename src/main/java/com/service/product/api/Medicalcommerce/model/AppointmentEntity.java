@@ -4,6 +4,15 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
+/***
+ * Patient will create Appointments, So OneToMany in PatientEntity makes sense
+ * Doctors will also access AppointmentEntity. They can have a List of AppointmentEntity.
+ * So, OneToMany in DoctorEntity makes sense.
+ * We are using ManyToOne Relationship in Appointments entity to allow Bi-directional Communication
+ * and it will also help us to retrieve the nested data with appointment details easily.
+ *
+ *
+ */
 @Entity
 //@Table(name = "AppointmentBookings")
 public class AppointmentEntity {
@@ -59,4 +68,8 @@ public class AppointmentEntity {
     @ManyToOne
     @JoinColumn(name = "preAssignedDoctorId", insertable = false, updatable = false)
     private DoctorEntity doctorEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "patientId", insertable = false, updatable = false)
+    private PatientEntity patientEntity;
 }
