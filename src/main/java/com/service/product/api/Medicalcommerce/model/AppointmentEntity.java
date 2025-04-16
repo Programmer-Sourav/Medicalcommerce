@@ -14,6 +14,7 @@ public class AppointmentEntity {
     private Long id;
     private Date appointmentTimeStamp;
 
+    public AppointmentEntity(){}
     public AppointmentEntity(Long id, Date appointmentTimeStamp, Long doctorId) {
         this.id = id;
         this.appointmentTimeStamp = appointmentTimeStamp;

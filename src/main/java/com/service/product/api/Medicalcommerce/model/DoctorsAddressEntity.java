@@ -10,6 +10,9 @@ import jakarta.persistence.Id;
 public class DoctorsAddressEntity {
 
 
+    public DoctorsAddressEntity() {
+    }
+
     public Long getId() {
         return id;
     }

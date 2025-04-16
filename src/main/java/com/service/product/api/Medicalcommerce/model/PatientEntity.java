@@ -14,6 +14,7 @@ public class PatientEntity {
 
     private String patientName;
 
+    public PatientEntity(){}
     public PatientEntity(Long id, String patientName, String patientPhoneNumber, String patientEmailId, ArrayList<String> diseaseHistory) {
         this.id = id;
         this.patientName = patientName;
@@ -56,11 +57,11 @@ public class PatientEntity {
         this.patientEmailId = patientEmailId;
     }
 
-    public ArrayList<String> getDiseaseHistory() {
-        return (ArrayList<String>) diseaseHistory;
+    public List<String> getDiseaseHistory() {
+        return  diseaseHistory;
     }
 
-    public void setDiseaseHistory(ArrayList<String> diseaseHistory) {
+    public void setDiseaseHistory(List<String> diseaseHistory) {
         this.diseaseHistory = diseaseHistory;
     }
 

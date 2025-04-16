@@ -15,6 +15,8 @@ public class DoctorEntity {
         this.currentAppointments = currentAppointments;
     }
 
+    public DoctorEntity(){}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -93,7 +95,7 @@ public class DoctorEntity {
     }
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @JoinColumn(name = "address_details", referencedColumnName = "id")
     private DoctorsAddressEntity addressDetails;
 
 }
