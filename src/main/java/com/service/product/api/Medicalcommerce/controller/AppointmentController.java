@@ -15,7 +15,7 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
 
-    @GetMapping
+    @GetMapping("/all_appointments")
     public ArrayList<AppointmentEntity> getAll(){
         return appointmentService.getAllAppointments();
     }
@@ -25,17 +25,17 @@ public class AppointmentController {
         return appointmentService.getAPatientById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add_appointment")
     public AppointmentEntity create(@RequestBody AppointmentEntity appointment){
         return appointmentService.saveAppointment(appointment);
     }
 
-    @PutMapping
+    @PutMapping("/update_appointment/{Id}")
     public AppointmentEntity update(@PathVariable Long Id, @RequestBody AppointmentEntity appointment){
         return appointmentService.updateAppointment(appointment, Id);
     }
 
-    @DeleteMapping
+    @DeleteMapping("delete_appointment")
     public void deleteAppointment(@PathVariable Long appointment){
         appointmentService.deleteAppointment(appointment);
     }
