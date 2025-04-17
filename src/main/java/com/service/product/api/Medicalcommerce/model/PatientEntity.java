@@ -80,7 +80,7 @@ public class PatientEntity {
         this.currentListOfAppointments = currentListOfAppointments;
     }
 
-    @OneToMany(mappedBy = "patientId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "patientEntity", cascade = CascadeType.ALL)
     private List<AppointmentEntity> currentListOfAppointments;
 
 }

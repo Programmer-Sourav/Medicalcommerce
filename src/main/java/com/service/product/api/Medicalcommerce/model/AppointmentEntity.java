@@ -66,7 +66,7 @@ public class AppointmentEntity {
 
 
     @ManyToOne
-    @JoinColumn(name = "preAssignedDoctorId", insertable = false, updatable = false)
+    @JoinColumn(name = "preAssignedDoctorId",  insertable = false, updatable = false)
     private DoctorEntity doctorEntity;
 
     @ManyToOne

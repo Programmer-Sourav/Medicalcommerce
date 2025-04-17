@@ -21,7 +21,7 @@ public class DoctorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(name = "preAssignedDoctorId")
     private String preAssignedDoctorId;
     private String doctorsUploadedPanCardForVerificationFilePath;
 
@@ -95,7 +95,7 @@ public class DoctorEntity {
 //    joinColumns = @JoinColumn(name ="doctorId"))
 //    @Column(name = "appointments")
 
-    @OneToMany(mappedBy = "doctorId", cascade =  CascadeType.ALL)
+    @OneToMany(mappedBy = "doctorEntity", cascade =  CascadeType.ALL)
     private List<AppointmentEntity> currentAppointments;
 
 
